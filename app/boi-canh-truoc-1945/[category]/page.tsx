@@ -18,7 +18,7 @@ const categoryData = {
         date: "1858",
         title: "Pháp nổ súng xâm lược Việt Nam",
         description: "Liên quân Pháp - Tây Ban Nha tấn công Đà Nẵng, mở đầu cuộc xâm lược Việt Nam của thực dân Pháp.",
-        href: "/boi-canh-truoc-1945/chinh-tri/phap-xam-luoc",
+        href: "/boi-canh-truoc-1945/chinh-tri/phap-no-sung",
         imageQuery: "french attack danang vietnam 1858",
       },
       {
@@ -34,7 +34,7 @@ const categoryData = {
         title: "Đảng Cộng sản Việt Nam ra đời",
         description:
           "Ngày 3/2/1930, Đảng Cộng sản Việt Nam được thành lập tại Hương Cảng, đánh dấu bước ngoặt quan trọng của cách mạng Việt Nam.",
-        href: "/boi-canh-truoc-1945/chinh-tri/thanh-lap-dang",
+        href: "/boi-canh-truoc-1945/chinh-tri/dang-thanh-lap",
         imageQuery: "communist party vietnam founding 1930 hong kong",
       },
       {
