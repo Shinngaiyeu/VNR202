@@ -19,7 +19,7 @@ const categoryData = {
         title: "Tổng tuyển cử bầu Quốc hội khóa I",
         description:
           "Tổng tuyển cử đầu tiên trong lịch sử Việt Nam, nhân dân cả nước đi bầu cử Quốc hội, khẳng định tính pháp lý của Nhà nước.",
-        href: "/boi-canh-sau-1945/chinh-tri/tong-tuyen-cu",
+        href: "/boi-canh-sau-1945/chinh-tri/tong-tuyen-cu-1946",
         imageQuery: "vietnam first general election january 1946 voting",
       },
       {
