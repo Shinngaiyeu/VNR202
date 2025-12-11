@@ -30,6 +30,7 @@ const eventData: Record<
       { query: "vietnam resistance building nation poster 1945", caption: "Khẩu hiệu Kháng chiến kiến quốc" },
       { query: "ho chi minh leading party meeting 1945", caption: "Chủ tịch Hồ Chí Minh chủ trì hội nghị" },
     ],
+    videoQuery: "5rM9evyIrkc",
   },
   "tong-tuyen-cu-1946": {
     title: "Tổng tuyển cử bầu Quốc hội khóa I",
@@ -46,6 +47,7 @@ const eventData: Record<
       { query: "vietnamese voters election 1946 queue", caption: "Cử tri xếp hàng bầu cử" },
       { query: "vietnam election ballot 1946 historical", caption: "Phiếu bầu cử lịch sử" },
     ],
+    videoQuery: "-zcjkwGaa7I",
   },
   "hiep-dinh-so-bo": {
     title: "Hiệp định Sơ bộ 6/3/1946",
@@ -199,39 +201,41 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               {event.videoQuery && (
                 <div className="mb-12">
                   <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Video tư liệu</h2>
-                  <div className="aspect-video relative rounded-xl overflow-hidden bg-muted">
-                    <img
-                      src={`/.jpg?height=400&width=800&query=${encodeURIComponent(event.videoQuery)}`}
-                      alt="Video tư liệu"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center cursor-pointer hover:bg-white transition-colors">
-                        <Play className="w-8 h-8 text-primary ml-1" />
-                      </div>
-                    </div>
+                  <div className="aspect-video relative rounded-xl overflow-hidden bg-muted shadow-xl">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${event.videoQuery}`}
+                      title="Video tư liệu"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                    ></iframe>
                   </div>
                 </div>
               )}
 
               {/* Images gallery */}
-              <div>
-                <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Hình ảnh tư liệu</h2>
-                <div className="grid md:grid-cols-3 gap-6">
-                  {event.images.map((image, index) => (
-                    <div key={index} className="group">
-                      <div className="aspect-[4/3] relative rounded-xl overflow-hidden bg-muted mb-3">
-                        <img
-                          src={`/.jpg?height=300&width=400&query=${encodeURIComponent(image.query)}`}
-                          alt={image.caption}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
+              {event.images && event.images.length > 0 && (
+                <div>
+                  <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Hình ảnh tư liệu</h2>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {event.images.map((image, index) => (
+                      <div key={index} className="group">
+                        <div className="aspect-[4/3] relative rounded-xl overflow-hidden bg-muted mb-3">
+                          <img
+                            src={`/images/gallery/${slug}-${index + 1}.png`}
+                            alt={image.caption}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <p className="text-sm text-muted-foreground text-center">{image.caption}</p>
                       </div>
-                      <p className="text-sm text-muted-foreground text-center">{image.caption}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>

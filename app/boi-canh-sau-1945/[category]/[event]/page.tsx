@@ -3,11 +3,67 @@ import { Footer } from "@/components/footer"
 import { ArrowLeft, Calendar, Play } from "lucide-react"
 import Link from "next/link"
 
+const eventDataMap: Record<string, {
+  title: string
+  date: string
+  description: string
+  content: string[]
+  images: { caption: string }[]
+  videoQuery?: string
+}> = {
+  "tang-gia-san-xuat": {
+    title: "Phong trào Tăng gia sản xuất",
+    date: "1945-1946",
+    description: "Phong trào đấu tranh chống nạn đói, xây dựng nền kinh tế độc lập",
+    content: [
+      "Bối cảnh: Ngay sau Cách mạng Tháng Tám, nước ta đối mặt với nạn đói khủng khiếp chưa từng có, hậu quả của chế độ thực dân và thiên tai, lũ lụt.",
+      "Chủ trương của Đảng & Chính phủ: Xác định \"diệt giặc đói\" là nhiệm vụ cấp bách hàng đầu. Phát động các phong trào lớn với khẩu hiệu hành động quyết liệt: \"Tăng gia sản xuất ngay, tăng gia sản xuất nữa\". Khuyến khích sửa chữa đê điều, tổ chức khuyến nông, khai hoang phục hóa. Tịch thu ruộng đất của đế quốc, Việt gian chia cho nông dân nghèo.",
+      "Kết quả: Sản xuất lương thực tăng lên rõ rệt cả về diện tích và sản lượng hoa màu. Đến đầu năm 1946, nạn đói cơ bản được đẩy lùi, đời sống nhân dân ổn định.",
+    ],
+    images: [
+      { caption: "Phong trào Tăng gia sản xuất" },
+      { caption: "Nông dân tích cực sản xuất" },
+      { caption: "Chia ruộng đất cho nông dân" },
+    ],
+    videoQuery: "HvG5BEI1l8A",
+  },
+  "tuan-le-vang": {
+    title: "Tuần lễ vàng",
+    date: "1945",
+    description: "Phong trào quyên góp xây dựng Quỹ độc lập",
+    content: [
+      "Bối cảnh: Khi mới giành chính quyền, nền tài chính nước nhà kiệt quệ, kho bạc trống rỗng do chế độ cũ để lại. Chính phủ cần nguồn lực tài chính để củng cố quốc phòng và kiến thiết đất nước.",
+      "Chủ trương: Chính phủ phát động \"Tuần lễ vàng\" và xây dựng \"Quỹ độc lập\". Kêu gọi tinh thần yêu nước, sự đóng góp tự nguyện của mọi tầng lớp nhân dân vào ngân khố quốc gia.",
+      "Ý nghĩa: Sự kiện này không chỉ giải quyết khó khăn tài chính trước mắt mà còn thể hiện lòng dân, sự ủng hộ tuyệt đối của nhân dân đối với chính quyền cách mạng non trẻ.",
+    ],
+    images: [
+      { caption: "Tuần lễ vàng" },
+      { caption: "Nhân dân quyên góp vàng" },
+      { caption: "Xây dựng Quỹ độc lập" },
+    ],
+    videoQuery: "n5woKfh0ZUs",
+  },
+  "phat-hanh-tien": {
+    title: "Phát hành tiền Việt Nam",
+    date: "1946",
+    description: "Phát hành đồng giấy bạc Việt Nam (giấy bạc Cụ Hồ)",
+    content: [
+      "Bối cảnh: Nền tài chính phụ thuộc, rối ren. Để khẳng định chủ quyền độc lập, Việt Nam cần có hệ thống tiền tệ riêng.",
+      "Hành động: Xây dựng lại Ngân khố quốc gia. Chính thức phát hành đồng giấy bạc Việt Nam (còn gọi là giấy bạc Cụ Hồ).",
+      "Ý nghĩa: Khẳng định chủ quyền tài chính độc lập của nước Việt Nam Dân chủ Cộng hòa. Là công cụ đắc lực để Chính phủ quản lý kinh tế, phục vụ sản xuất và chiến đấu.",
+    ],
+    images: [
+      { caption: "Giấy bạc Cụ Hồ" },
+      { caption: "Đồng tiền Việt Nam đầu tiên" },
+      { caption: "Khẳng định chủ quyền tài chính" },
+    ],
+  },
+}
+
 export default async function EventPage({ params }: { params: Promise<{ category: string; event: string }> }) {
   const { category, event } = await params
 
-  // Sample event data - in a real app, this would come from a database
-  const eventData = {
+  const eventData = eventDataMap[event] || {
     title: "Sự kiện lịch sử",
     date: "1945-1946",
     description: "Chi tiết về sự kiện lịch sử quan trọng sau ngày Độc lập 2/9/1945.",
@@ -17,9 +73,9 @@ export default async function EventPage({ params }: { params: Promise<{ category
       "Những quyết sách sáng suốt trong giai đoạn này đã đặt nền móng vững chắc cho sự nghiệp cách mạng.",
     ],
     images: [
-      { query: "vietnam independence 1945 building nation", caption: "Hình ảnh tư liệu 1" },
-      { query: "vietnamese government 1945 1946 historical", caption: "Hình ảnh tư liệu 2" },
-      { query: "vietnam democratic republic early days", caption: "Hình ảnh tư liệu 3" },
+      { caption: "Hình ảnh tư liệu 1" },
+      { caption: "Hình ảnh tư liệu 2" },
+      { caption: "Hình ảnh tư liệu 3" },
     ],
   }
 
@@ -66,17 +122,23 @@ export default async function EventPage({ params }: { params: Promise<{ category
               </div>
 
               {/* Video section */}
-              <div className="mb-12">
-                <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Video tư liệu</h2>
-                <div className="aspect-video relative rounded-xl overflow-hidden bg-muted">
-                  <img src="/vietnam-post-independence-documentary-1945.jpg" alt="Video tư liệu" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center cursor-pointer hover:bg-white transition-colors">
-                      <Play className="w-8 h-8 text-primary ml-1" />
-                    </div>
+              {eventData.videoQuery && (
+                <div className="mb-12">
+                  <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Video tư liệu</h2>
+                  <div className="aspect-video relative rounded-xl overflow-hidden bg-muted">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${eventData.videoQuery}`}
+                      title="Video tư liệu"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0"
+                    ></iframe>
                   </div>
                 </div>
-              </div>
+              )}
 
               {/* Images gallery */}
               <div>
@@ -86,7 +148,7 @@ export default async function EventPage({ params }: { params: Promise<{ category
                     <div key={index} className="group">
                       <div className="aspect-[4/3] relative rounded-xl overflow-hidden bg-muted mb-3">
                         <img
-                          src={`/.jpg?height=300&width=400&query=${encodeURIComponent(image.query)}`}
+                          src={`/images/gallery/${event}-${index + 1}.png`}
                           alt={image.caption}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
