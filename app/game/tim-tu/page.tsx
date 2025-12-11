@@ -62,7 +62,7 @@ const WORDS: WordData[] = [
     word: "NAMTIEN",
     displayWord: "NAM TIẾN",
     hint: "(7 chữ cái): Tên đoàn quân từ miền Bắc hành quân vào chi viện cho miền Nam chiến đấu?",
-    locationHint: "⬇️ Hàng dọc cột 1 (từ hàng C xuống hàng I)",
+    locationHint: "⬇️ Hàng dọc 1 (từ hàng C xuống hàng I)",
     positions: [
       { row: 2, col: 0 },
       { row: 3, col: 0 },
@@ -78,7 +78,7 @@ const WORDS: WordData[] = [
     word: "GIACDOT",
     displayWord: "GIẶC DỐT",
     hint: '(7 chữ cái): Tên loại "giặc" mà Bác Hồ gọi nạn mù chữ?',
-    locationHint: "⬇️ Hàng dọc cột 4 (từ hàng C xuống hàng I)",
+    locationHint: "⬇️ Hàng dọc 4 (từ hàng C xuống hàng I)",
     positions: [
       { row: 2, col: 3 },
       { row: 3, col: 3 },
@@ -94,7 +94,7 @@ const WORDS: WordData[] = [
     word: "HIENPHAP",
     displayWord: "HIẾN PHÁP",
     hint: "(8 chữ cái): Văn bản pháp lý cao nhất của nước ta được Quốc hội thông qua năm 1946?",
-    locationHint: "⬇️ Hàng dọc cột 12 (từ hàng A xuống hàng H)",
+    locationHint: "⬇️ Hàng dọc 12 (từ hàng A xuống hàng H)",
     positions: [
       { row: 0, col: 11 },
       { row: 1, col: 11 },
@@ -406,9 +406,7 @@ export default function WordSearchGame() {
                           >
                             {word.hint}
                           </p>
-                          {foundWords.includes(word.word) && (
-                            <p className="text-green-600 font-bold mt-1 text-sm">Đáp án: {word.displayWord}</p>
-                          )}
+
                           {showHints && !foundWords.includes(word.word) && (
                             <div className="mt-2">
                               <p className="text-xs text-red-600 font-medium">{word.locationHint}</p>

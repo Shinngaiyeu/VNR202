@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Trophy, RotateCcw, Lightbulb, Star, HelpCircle } from "lucide-react"
+import { Trophy, RotateCcw, Star, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import confetti from "canvas-confetti"
 
@@ -18,62 +18,62 @@ interface CrosswordRow {
 
 const crosswordData: CrosswordRow[] = [
   {
-    answer: "HIẾNPHÁP",
-    hint: "Văn kiện pháp lý cao nhất được Quốc hội khóa I thông qua năm 1946?",
+    answer: "HIENPHAP",
+    hint: "Văn bản pháp lý cao nhất của nước ta được Quốc hội khóa I thông qua ngày 09/11/1946?",
     keywordPosition: 1,
     keywordLetter: "H",
   },
   {
-    answer: "TỔNGTUYỂNCỬ",
-    hint: "Sự kiện diễn ra ngày 06/01/1946, khi cử tri cả nước đi bầu Quốc hội?",
+    answer: "TONGTUYENCU",
+    hint: "Cuộc bầu cử lịch sử đầu tiên ở Việt Nam diễn ra ngày 06/01/1946 để bầu Quốc hội?",
     keywordPosition: 2,
-    keywordLetter: "Ổ",
+    keywordLetter: "O",
   },
   {
-    answer: "BÌNHDÂNHỌCVỤ",
-    hint: 'Tên phong trào được phát động để tiêu diệt "Giặc dốt"?',
-    keywordPosition: 9,
-    keywordLetter: "C",
+    answer: "GIACDOI",
+    hint: "Tên loại 'giặc' khủng khiếp đã cướp đi sinh mạng của hơn 2 triệu đồng bào ta vào năm 1945, được Chủ tịch Hồ Chí Minh xếp ngang hàng với giặc dốt và giặc ngoại xâm?",
+    keywordPosition: 4,
+    keywordLetter: "D",
   },
   {
-    answer: "HÒAHOÃN",
-    hint: "Đây là sách lược ngoại giao mềm dẻo của Đảng ta đối với quân Tưởng và Pháp trong năm 1946?",
+    answer: "HOAHOAN",
+    hint: "Sách lược ngoại giao mềm dẻo của Chủ tịch Hồ Chí Minh đối với quân Tưởng và Pháp năm 1946?",
     keywordPosition: 1,
     keywordLetter: "H",
   },
   {
-    answer: "CHỈTHỊ",
-    hint: 'Tên loại văn bản của Trung ương Đảng ra ngày 25/11/1945: "___ Kháng chiến kiến quốc"?',
-    keywordPosition: 3,
-    keywordLetter: "Ỉ",
-  },
-  {
-    answer: "VIỆTMINH",
-    hint: "Tên gọi tắt của Mặt trận đoàn kết dân tộc đóng vai trò nòng cốt trong Cách mạng Tháng Tám và kháng chiến?",
-    keywordPosition: 5,
-    keywordLetter: "M",
-  },
-  {
-    answer: "TÀICHÍNH",
-    hint: '"Tuần lễ Vàng" là biện pháp để giải quyết khó khăn trong lĩnh vực nào?',
+    answer: "CHITHI",
+    hint: "Văn bản của Trung ương Đảng ra ngày 25/11/1945 có tên: '___ Kháng chiến kiến quốc'?",
     keywordPosition: 3,
     keywordLetter: "I",
   },
   {
-    answer: "NAMTIẾN",
-    hint: "Tên gọi các đoàn quân từ miền Bắc chi viện cho miền Nam chiến đấu ngay sau ngày 23/9/1945?",
+    answer: "VIETMINH",
+    hint: "Tên gọi tắt của mặt trận dân tộc thống nhất do Đảng ta lập ra năm 1941?",
+    keywordPosition: 5,
+    keywordLetter: "M",
+  },
+  {
+    answer: "TAICHINH",
+    hint: "'Tuần lễ Vàng' (9/1945) là biện pháp giải quyết khó khăn trong lĩnh vực nào?",
+    keywordPosition: 3,
+    keywordLetter: "I",
+  },
+  {
+    answer: "NAMTIEN",
+    hint: "Tên gọi các đoàn quân Bắc Bộ tiến vào Nam Bộ chi viện sau ngày 23/9/1945?",
     keywordPosition: 1,
     keywordLetter: "N",
   },
   {
-    answer: "HÀNỘI",
-    hint: "Nơi Trung đoàn Thủ đô đã chiến đấu giam chân địch 60 ngày đêm?",
+    answer: "HANOI",
+    hint: "Thành phố nào đã kiên cường kháng chiến 60 ngày đêm từ 19/12/1946?",
     keywordPosition: 1,
     keywordLetter: "H",
   },
 ]
 
-const KEYWORD = "HỒCHÍMINH"
+const KEYWORD = "HOCHIMINH"
 
 export default function CrosswordGame() {
   const [answers, setAnswers] = useState<string[]>(crosswordData.map(() => ""))
@@ -81,7 +81,9 @@ export default function CrosswordGame() {
   const [showKeyword, setShowKeyword] = useState(false)
   const [selectedRow, setSelectedRow] = useState<number | null>(null)
   const [gameWon, setGameWon] = useState(false)
+  const [keywordInput, setKeywordInput] = useState<string[]>(Array(KEYWORD.length).fill(""))
   const inputRefs = useRef<(HTMLInputElement | null)[][]>([])
+  const keywordInputRefs = useRef<(HTMLInputElement | null)[]>([])
 
   // Initialize input refs
   useEffect(() => {
@@ -253,32 +255,76 @@ export default function CrosswordGame() {
     }
   }
 
-  const revealHint = (rowIndex: number) => {
-    const newAnswers = [...answers]
-    const currentAnswer = newAnswers[rowIndex].split("")
-    const correctAnswer = crosswordData[rowIndex].answer
+  const normalizeString = (str: string): string => {
+    return str.split("").map(c => normalizeChar(c)).join("").toUpperCase()
+  }
 
-    // Reveal 2 random letters that aren't already filled
-    const emptyIndices: number[] = []
-    for (let i = 0; i < correctAnswer.length; i++) {
-      if (!currentAnswer[i]) {
-        emptyIndices.push(i)
+  const checkKeywordAndRevealAll = (currentKeywordInput: string[]) => {
+    const inputKeyword = currentKeywordInput.join("").toUpperCase()
+    const normalizedInput = normalizeString(inputKeyword)
+    const normalizedKeyword = normalizeString(KEYWORD)
+    
+    if (normalizedInput === normalizedKeyword && inputKeyword.length === KEYWORD.length) {
+      // Reveal all answers
+      const newAnswers = crosswordData.map(row => row.answer)
+      setAnswers(newAnswers)
+      setRevealed(crosswordData.map(() => true))
+      setShowKeyword(true)
+      setGameWon(true)
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#dc2626", "#facc15", "#ffffff"],
+      })
+    }
+  }
+
+  const handleKeywordKeyDown = (charIndex: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (gameWon) return
+
+    // Handle character input
+    if (e.key.length === 1 && /[a-zA-ZÀ-ỹ]/i.test(e.key)) {
+      e.preventDefault()
+      const newKeywordInput = [...keywordInput]
+      newKeywordInput[charIndex] = e.key.toUpperCase()
+      setKeywordInput(newKeywordInput)
+
+      // Auto-move to next input
+      if (charIndex < KEYWORD.length - 1) {
+        keywordInputRefs.current[charIndex + 1]?.focus()
       }
+
+      // Check if keyword is complete
+      checkKeywordAndRevealAll(newKeywordInput)
+      return
     }
 
-    const shuffled = emptyIndices.sort(() => Math.random() - 0.5)
-    const toReveal = shuffled.slice(0, Math.min(2, shuffled.length))
-
-    while (currentAnswer.length < correctAnswer.length) {
-      currentAnswer.push("")
+    // Handle backspace
+    if (e.key === "Backspace") {
+      e.preventDefault()
+      const newKeywordInput = [...keywordInput]
+      if (newKeywordInput[charIndex]) {
+        newKeywordInput[charIndex] = ""
+        setKeywordInput(newKeywordInput)
+      } else if (charIndex > 0) {
+        keywordInputRefs.current[charIndex - 1]?.focus()
+      }
+      return
     }
 
-    toReveal.forEach((idx) => {
-      currentAnswer[idx] = correctAnswer[idx]
-    })
-
-    newAnswers[rowIndex] = currentAnswer.join("")
-    setAnswers(newAnswers)
+    // Handle arrow keys
+    if (e.key === "ArrowLeft" && charIndex > 0) {
+      e.preventDefault()
+      keywordInputRefs.current[charIndex - 1]?.focus()
+    }
+    if (e.key === "ArrowRight" && charIndex < KEYWORD.length - 1) {
+      e.preventDefault()
+      keywordInputRefs.current[charIndex + 1]?.focus()
+    }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault()
+    }
   }
 
   const resetGame = () => {
@@ -287,6 +333,7 @@ export default function CrosswordGame() {
     setShowKeyword(false)
     setGameWon(false)
     setSelectedRow(null)
+    setKeywordInput(Array(KEYWORD.length).fill(""))
   }
 
   // Calculate max length for alignment
@@ -323,23 +370,42 @@ export default function CrosswordGame() {
             </CardTitle>
           </CardHeader>
           <CardContent>
+            <p className="text-center text-white/80 text-sm mb-3">Nhập từ khóa hoặc giải các ô chữ hàng ngang</p>
             <div className="flex justify-center gap-2 flex-wrap">
-              {getKeywordLetters().map((letter, idx) => (
-                <div
-                  key={idx}
-                  className={`w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-2xl md:text-3xl font-bold rounded-lg border-2 transition-all duration-500 ${
-                    letter !== "?"
-                      ? "bg-yellow-400 text-red-700 border-yellow-500 scale-110"
-                      : "bg-white/20 text-white/50 border-white/30"
-                  }`}
-                >
-                  {letter}
-                </div>
-              ))}
+              {KEYWORD.split("").map((letter, idx) => {
+                const isRevealed = revealed[idx]
+                const displayLetter = isRevealed ? crosswordData[idx].keywordLetter : keywordInput[idx]
+                
+                return (
+                  <div key={idx} className="relative">
+                    <input
+                      ref={(el) => {
+                        keywordInputRefs.current[idx] = el
+                      }}
+                      type="text"
+                      maxLength={1}
+                      value={displayLetter}
+                      onKeyDown={(e) => handleKeywordKeyDown(idx, e)}
+                      disabled={gameWon}
+                      readOnly
+                      className={`w-12 h-12 md:w-14 md:h-14 text-center text-2xl md:text-3xl font-bold rounded-lg border-2 transition-all duration-500 outline-none cursor-text ${
+                        isRevealed || gameWon
+                          ? "bg-yellow-400 text-red-700 border-yellow-500 scale-110"
+                          : displayLetter
+                            ? "bg-yellow-200 text-red-700 border-yellow-400"
+                            : "bg-white/20 text-white border-white/30 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400"
+                      }`}
+                    />
+                    <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] text-white/60">
+                      {idx + 1}
+                    </span>
+                  </div>
+                )
+              })}
             </div>
             {gameWon && (
               <div className="text-center mt-4 animate-pulse">
-                <p className="text-yellow-400 text-xl font-bold">HỒ CHÍ MINH</p>
+                <p className="text-yellow-400 text-xl font-bold">HO CHI MINH</p>
                 <p className="text-white/80 text-sm mt-1">Vị lãnh tụ vĩ đại của dân tộc Việt Nam!</p>
               </div>
             )}
@@ -372,7 +438,7 @@ export default function CrosswordGame() {
                         }`}
                       >
                         {/* Row number */}
-                        <div className="w-8 h-10 flex items-center justify-center font-bold text-red-700 bg-red-100 rounded">
+                        <div className="w-10 h-12 flex items-center justify-center font-bold text-red-700 bg-red-100 rounded">
                           {rowIndex + 1}
                         </div>
 
@@ -380,7 +446,7 @@ export default function CrosswordGame() {
                         {Array(Math.max(0, paddingBefore))
                           .fill(null)
                           .map((_, i) => (
-                            <div key={`pad-${i}`} className="w-10 h-10" />
+                            <div key={`pad-${i}`} className="w-12 h-12" />
                           ))}
 
                         {/* Answer cells */}
@@ -407,7 +473,7 @@ export default function CrosswordGame() {
                                   onFocus={() => setSelectedRow(rowIndex)}
                                   disabled={isRevealed}
                                   readOnly
-                                  className={`w-10 h-10 text-center text-lg font-bold uppercase border-2 rounded transition-all outline-none cursor-text ${
+                                  className={`w-12 h-12 text-center text-xl font-bold uppercase border-2 rounded transition-all outline-none cursor-text ${
                                     isKeywordCell
                                       ? isRevealed
                                         ? "bg-yellow-400 border-yellow-500 text-red-700"
@@ -425,17 +491,6 @@ export default function CrosswordGame() {
                               </div>
                             )
                           })}
-
-                        {/* Hint button */}
-                        {!revealed[rowIndex] && (
-                          <button
-                            onClick={() => revealHint(rowIndex)}
-                            className="ml-2 p-2 text-yellow-600 hover:text-yellow-700 hover:bg-yellow-100 rounded-full transition-colors"
-                            title="Gợi ý (hiện 2 chữ)"
-                          >
-                            <Lightbulb className="h-5 w-5" />
-                          </button>
-                        )}
 
                         {/* Correct indicator */}
                         {revealed[rowIndex] && (
@@ -487,9 +542,6 @@ export default function CrosswordGame() {
                         </span>
                         <div className="flex-1">
                           <p className={`text-sm ${revealed[idx] ? "text-green-700" : "text-gray-700"}`}>{row.hint}</p>
-                          {revealed[idx] && (
-                            <p className="text-green-600 font-bold mt-1 text-sm">Đáp án: {row.answer}</p>
-                          )}
                           <p className="text-xs text-gray-500 mt-1">({row.answer.length} chữ cái)</p>
                         </div>
                       </div>
@@ -527,7 +579,7 @@ export default function CrosswordGame() {
                 <h2 className="text-3xl font-bold text-yellow-400 mb-2">XUẤT SẮC!</h2>
                 <p className="text-white text-lg mb-4">Bạn đã giải mã thành công từ khóa:</p>
                 <div className="bg-yellow-400 text-red-700 text-3xl font-bold py-3 px-6 rounded-lg inline-block mb-4">
-                  HỒ CHÍ MINH
+                  HO CHI MINH
                 </div>
                 <p className="text-white/80 text-sm mb-6">
                   Chủ tịch Hồ Chí Minh - Vị lãnh tụ vĩ đại, người cha già kính yêu của dân tộc Việt Nam, Anh hùng giải
