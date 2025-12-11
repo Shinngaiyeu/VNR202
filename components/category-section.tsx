@@ -11,25 +11,25 @@ const categoryIcons = {
 
 const categoryColors = {
   "chinh-tri": {
-    bg: "bg-gradient-to-br from-red-50 to-yellow-50/50",
+    bg: "bg-gradient-to-br from-red-50 to-yellow-50/50 bg-pattern",
     icon: "bg-red-600 text-yellow-400",
     accent: "text-red-600",
     border: "border-red-200",
   },
   "kinh-te": {
-    bg: "bg-gradient-to-br from-yellow-50 to-red-50/50",
+    bg: "bg-gradient-to-br from-yellow-50 to-red-50/50 bg-pattern",
     icon: "bg-yellow-500 text-red-700",
     accent: "text-yellow-600",
     border: "border-yellow-200",
   },
   "giao-duc": {
-    bg: "bg-gradient-to-br from-red-50/80 to-yellow-50/80",
+    bg: "bg-gradient-to-br from-red-50/80 to-yellow-50/80 bg-pattern",
     icon: "bg-red-700 text-yellow-300",
     accent: "text-red-700",
     border: "border-red-200",
   },
   "quan-su": {
-    bg: "bg-gradient-to-br from-yellow-50/80 to-red-50/80",
+    bg: "bg-gradient-to-br from-yellow-50/80 to-red-50/80 bg-pattern",
     icon: "bg-yellow-600 text-red-800",
     accent: "text-yellow-700",
     border: "border-yellow-200",
@@ -91,7 +91,7 @@ export function CategorySection({ category, title, description, href, imageQuery
           <div className={cn("relative", isReversed && "lg:col-start-1")}>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src={`/.jpg?height=400&width=600&query=${encodeURIComponent(imageQuery)}`}
+                src={`/images/${category}-${href.includes('truoc-1945') ? 'truoc' : 'sau'}-1945.png`}
                 alt={title}
                 className="w-full h-full object-cover"
               />

@@ -36,7 +36,7 @@ export function TimelineEvent({ date, title, description, href, imageQuery, isLa
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="aspect-video sm:w-48 relative rounded-lg overflow-hidden bg-muted flex-shrink-0">
               <img
-                src={`/.jpg?height=120&width=200&query=${encodeURIComponent(imageQuery)}`}
+                src={`/images/events/${href.split('/').pop()}.png`}
                 alt={title}
                 className="w-full h-full object-cover"
               />

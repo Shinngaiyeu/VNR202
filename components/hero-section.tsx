@@ -3,15 +3,16 @@ interface HeroSectionProps {
   subtitle?: string
   description: string
   imageQuery: string
+  pageName?: string
 }
 
-export function HeroSection({ title, subtitle, description, imageQuery }: HeroSectionProps) {
+export function HeroSection({ title, subtitle, description, imageQuery, pageName }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden min-h-[70vh] flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={`/.jpg?height=800&width=1600&query=${encodeURIComponent(imageQuery)}`}
+          src={pageName ? `/images/hero/${pageName}.png` : `/.jpg?height=800&width=1600&query=${encodeURIComponent(imageQuery)}`}
           alt={title}
           className="w-full h-full object-cover"
         />

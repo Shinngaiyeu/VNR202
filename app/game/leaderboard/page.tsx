@@ -101,13 +101,13 @@ export default function LeaderboardPage() {
   const getRankClass = (index: number) => {
     switch (index) {
       case 0:
-        return "bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-300"
+        return "bg-gradient-to-r from-yellow-50 to-amber-50 bg-pattern-card border-yellow-300"
       case 1:
-        return "bg-gradient-to-r from-gray-50 to-slate-50 border-gray-300"
+        return "bg-gradient-to-r from-gray-50 to-slate-50 bg-pattern-card border-gray-300"
       case 2:
-        return "bg-gradient-to-r from-amber-50 to-orange-50 border-amber-300"
+        return "bg-gradient-to-r from-amber-50 to-orange-50 bg-pattern-card border-amber-300"
       default:
-        return "bg-white border-gray-200"
+        return "bg-white bg-pattern-card border-gray-200"
     }
   }
 
@@ -141,7 +141,7 @@ export default function LeaderboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-red-50 via-yellow-50 to-white py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-red-50 via-yellow-50 to-white bg-pattern py-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

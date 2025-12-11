@@ -10,10 +10,10 @@ const categoryIcons = {
 }
 
 const categoryColors = {
-  "chinh-tri": "bg-red-50 border-red-200 hover:border-red-400",
-  "kinh-te": "bg-amber-50 border-amber-200 hover:border-amber-400",
-  "giao-duc": "bg-blue-50 border-blue-200 hover:border-blue-400",
-  "quan-su": "bg-green-50 border-green-200 hover:border-green-400",
+  "chinh-tri": "bg-red-50 bg-pattern-card border-red-200 hover:border-red-400",
+  "kinh-te": "bg-amber-50 bg-pattern-card border-amber-200 hover:border-amber-400",
+  "giao-duc": "bg-blue-50 bg-pattern-card border-blue-200 hover:border-blue-400",
+  "quan-su": "bg-green-50 bg-pattern-card border-green-200 hover:border-green-400",
 }
 
 const iconColors = {

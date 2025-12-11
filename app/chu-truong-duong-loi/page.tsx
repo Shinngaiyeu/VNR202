@@ -80,6 +80,7 @@ export default function ChuTruongDuongLoiPage() {
           subtitle="Quyết sách sáng suốt 1945-1946"
           description="Những quyết định mang tính lịch sử của Đảng và Chủ tịch Hồ Chí Minh trong giai đoạn khó khăn nhất, từ chỉ thị Kháng chiến kiến quốc đến Lời kêu gọi Toàn quốc kháng chiến."
           imageQuery="ho chi minh communist party vietnam leadership 1945 1946"
+          pageName="chu-truong-duong-loi"
         />
 
         <section className="py-16 md:py-24 bg-muted/30">

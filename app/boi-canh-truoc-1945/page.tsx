@@ -49,6 +49,7 @@ export default function BoiCanhTruoc1945Page() {
           subtitle="Thời kỳ Pháp thuộc"
           description="Thời kỳ đen tối dưới ách đô hộ của thực dân Pháp, nhưng cũng là thời kỳ Đảng chuẩn bị kỹ lưỡng về lực lượng chính trị và vũ trang suốt 15 năm qua các cao trào cách mạng."
           imageQuery="french colonial vietnam hanoi 1940s historical"
+          pageName="boi-canh-truoc-1945"
         />
 
         {categories.map((cat, index) => (

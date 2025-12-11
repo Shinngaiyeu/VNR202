@@ -49,6 +49,7 @@ export default function BoiCanhSau1945Page() {
           subtitle="Tình thế ngàn cân treo sợi tóc"
           description="Sau khi nước Việt Nam Dân chủ Cộng hòa ra đời, đất nước đối mặt với giặc đói, giặc dốt, giặc ngoại xâm - những thách thức chồng chất đe dọa nền độc lập non trẻ."
           imageQuery="vietnam independence day september 2 1945 ba dinh square"
+          pageName="boi-canh-sau-1945"
         />
 
         {categories.map((cat, index) => (

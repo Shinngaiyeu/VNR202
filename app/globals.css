@@ -124,6 +124,23 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Vietnamese traditional pattern background for white/card sections */
+  .bg-pattern {
+    background-image: url('/images/traditional-pattern.png');
+    background-size: 400px 400px;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 0.97;
+  }
+  
+  .bg-pattern-card {
+    background-image: url('/images/traditional-pattern.png');
+    background-size: 300px 300px;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 0.95;
+  }
 }
 
 /* Custom animations */

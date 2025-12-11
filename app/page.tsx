@@ -55,7 +55,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Quote Section */}
+        {/* Quote Section
         <section className="py-16 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             <blockquote className="max-w-4xl mx-auto text-center">
@@ -66,7 +66,7 @@ export default function HomePage() {
               </p>
             </blockquote>
           </div>
-        </section>
+        </section> */}
 
         {/* Navigation Cards */}
         <section className="py-20 bg-muted/30">
