@@ -197,7 +197,7 @@ export default async function CategoryDetailPage({ params }: { params: Promise<{
 
               <div className="mt-8">
                 {data.events.map((event, index) => (
-                  <TimelineEvent key={event.date} {...event} isLast={index === data.events.length - 1} />
+                  <TimelineEvent key={event.date} {...event} isLast={index === data.events.length - 1} showDetailButton={false} />
                 ))}
               </div>
             </div>

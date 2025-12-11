@@ -11,7 +11,7 @@ const eventData: Record<
     date: string
     description: string
     content: string[]
-    images: { query: string; caption: string }[]
+    images: { caption: string }[]
     videoQuery?: string
   }
 > = {
@@ -26,9 +26,9 @@ const eventData: Record<
       "Chỉ thị đề ra các nhiệm vụ cụ thể trên các lĩnh vực: chính trị, quân sự, kinh tế, văn hóa - xã hội, ngoại giao, tạo cơ sở cho việc xây dựng và bảo vệ chính quyền cách mạng non trẻ.",
     ],
     images: [
-      { query: "vietnam communist party central committee meeting 1945", caption: "Hội nghị Trung ương Đảng" },
-      { query: "vietnam resistance building nation poster 1945", caption: "Khẩu hiệu Kháng chiến kiến quốc" },
-      { query: "ho chi minh leading party meeting 1945", caption: "Chủ tịch Hồ Chí Minh chủ trì hội nghị" },
+      { caption: "Hội nghị Trung ương Đảng" },
+      { caption: "Khẩu hiệu Kháng chiến kiến quốc" },
+      { caption: "Chủ tịch Hồ Chí Minh chủ trì hội nghị" },
     ],
     videoQuery: "5rM9evyIrkc",
   },
@@ -37,15 +37,15 @@ const eventData: Record<
     date: "6/1/1946",
     description: "Cuộc Tổng tuyển cử đầu tiên trong lịch sử Việt Nam",
     content: [
-      "Ngày 6/1/1946, cuộc Tổng tuyển cử bầu Quốc hội đầu tiên được tổ chức trên toàn quốc, đánh dấu một bước ngoặt lịch sử quan trọng.",
-      "Đây là lần đầu tiên trong lịch sử Việt Nam, toàn dân được thực hiện quyền công dân, bầu ra cơ quan quyền lực cao nhất của Nhà nước.",
-      "Hơn 89% cử tri đi bầu cử, bất chấp sự phá hoại của kẻ thù và điều kiện khó khăn. Cuộc bầu cử diễn ra sôi nổi từ thành thị đến nông thôn, từ miền xuôi đến miền núi.",
-      "Kết quả, 333 đại biểu được bầu vào Quốc hội, đại diện cho mọi tầng lớp nhân dân, các đảng phái, tôn giáo, dân tộc. Quốc hội khóa I ra đời, khẳng định tính pháp lý của nước Việt Nam Dân chủ Cộng hòa.",
+      "Chủ trương: Để khẳng định địa vị pháp lý của Nhà nước Việt Nam Dân chủ Cộng hòa, Đảng và Chủ tịch Hồ Chí Minh chủ trương sớm tổ chức cuộc bầu cử toàn quốc theo hình thức phổ thông đầu phiếu.",
+      "Diễn biến: Hơn 89% cử tri cả nước đã đi bỏ phiếu, bao gồm cả đồng bào Nam Bộ phải đi bầu dưới làn đạn của giặc Pháp. Cuộc bầu cử diễn ra với tinh thần 'mỗi lá phiếu là một viên đạn bắn vào quân thù', làm thất bại âm mưu chia rẽ của kẻ thù.",
+      "Kết quả: Bầu ra 333 đại biểu Quốc hội đầu tiên của nước Việt Nam Dân chủ Cộng hòa, đại diện cho mọi tầng lớp nhân dân, các đảng phái, tôn giáo, dân tộc.",
+      "Ý nghĩa: Cuộc Tổng tuyển cử thành công đã khẳng định tính pháp lý của Nhà nước Việt Nam Dân chủ Cộng hòa trước nhân dân và thế giới, thể hiện ý chí độc lập tự chủ của toàn dân tộc.",
     ],
     images: [
-      { query: "vietnam first general election 1946 voting booth", caption: "Nhân dân đi bỏ phiếu" },
-      { query: "vietnamese voters election 1946 queue", caption: "Cử tri xếp hàng bầu cử" },
-      { query: "vietnam election ballot 1946 historical", caption: "Phiếu bầu cử lịch sử" },
+      { caption: "Nhân dân đi bỏ phiếu" },
+      { caption: "Cử tri xếp hàng bầu cử" },
+      { caption: "Phiếu bầu cử lịch sử" },
     ],
     videoQuery: "-zcjkwGaa7I",
   },
@@ -60,9 +60,9 @@ const eventData: Record<
       "Hiệp định giúp ta có thêm thời gian xây dựng, củng cố lực lượng, chuẩn bị cho cuộc kháng chiến lâu dài khi cần thiết.",
     ],
     images: [
-      { query: "ho chi minh signing preliminary agreement 1946", caption: "Lễ ký Hiệp định Sơ bộ" },
-      { query: "vietnam france preliminary agreement document 1946", caption: "Văn bản Hiệp định Sơ bộ" },
-      { query: "ho chi minh sainteny preliminary agreement 1946", caption: "Chủ tịch Hồ Chí Minh và Jean Sainteny" },
+      { caption: "Lễ ký Hiệp định Sơ bộ" },
+      { caption: "Văn bản Hiệp định Sơ bộ" },
+      { caption: "Chủ tịch Hồ Chí Minh và Jean Sainteny" },
     ],
   },
   "loi-keu-goi-toan-quoc-khang-chien": {
@@ -77,11 +77,11 @@ const eventData: Record<
       "Lời kêu gọi đã thổi bùng ngọn lửa yêu nước trong lòng mỗi người dân Việt Nam, mở đầu cuộc kháng chiến toàn quốc chống thực dân Pháp xâm lược.",
     ],
     images: [
-      { query: "ho chi minh appeal resistance december 1946", caption: "Chủ tịch Hồ Chí Minh đọc Lời kêu gọi" },
-      { query: "vietnam hanoi resistance december 1946", caption: "Hà Nội kháng chiến" },
-      { query: "vietnamese soldiers december 1946 resistance", caption: "Chiến sĩ sẵn sàng chiến đấu" },
+      { caption: "Chủ tịch Hồ Chí Minh đọc Lời kêu gọi" },
+      { caption: "Hà Nội kháng chiến" },
+      { caption: "Chiến sĩ sẵn sàng chiến đấu" },
     ],
-    videoQuery: "ho chi minh national resistance appeal 1946 video",
+    videoQuery: "RzTxaGZ4bTw",
   },
   "vu-an-on-nhu-hau": {
     title: "Phá vụ án phố Ôn Như Hầu",
@@ -94,9 +94,9 @@ const eventData: Record<
       "Vụ án phố Ôn Như Hầu cho thấy sự cảnh giác cao độ và năng lực của lực lượng công an cách mạng trong việc bảo vệ chính quyền non trẻ.",
     ],
     images: [
-      { query: "vietnam police operation 1946 security", caption: "Lực lượng công an làm nhiệm vụ" },
-      { query: "on nhu hau street hanoi 1946", caption: "Phố Ôn Như Hầu" },
-      { query: "vietnam counterrevolutionary arrest 1946", caption: "Bắt giữ phần tử phản động" },
+      { caption: "Lực lượng công an làm nhiệm vụ" },
+      { caption: "Phố Ôn Như Hầu" },
+      { caption: "Bắt giữ phần tử phản động" },
     ],
   },
   "quoc-hoi-phien-dau-tien": {
@@ -104,15 +104,15 @@ const eventData: Record<
     date: "2/3/1946",
     description: "Phiên họp lịch sử của Quốc hội khóa I",
     content: [
-      "Ngày 2/3/1946, Quốc hội khóa I họp phiên đầu tiên tại Nhà hát Lớn Hà Nội, với sự tham dự của 333 đại biểu được bầu từ cuộc Tổng tuyển cử ngày 6/1/1946.",
-      "Quốc hội đã công nhận Chính phủ Liên hiệp Kháng chiến do Chủ tịch Hồ Chí Minh đứng đầu, với sự tham gia của các đảng phái chính trị và nhân sĩ tiêu biểu.",
-      "Phiên họp đã thông qua danh sách các thành viên Chính phủ và các chức danh quan trọng, đặt nền móng cho bộ máy nhà nước Việt Nam Dân chủ Cộng hòa.",
-      "Đây là sự kiện có ý nghĩa lịch sử to lớn, đánh dấu sự ra đời chính thức của cơ quan quyền lực nhà nước cao nhất, thể hiện ý chí thống nhất của toàn dân tộc.",
+      "Thời gian: Ngày 2/3/1946. Địa điểm: Nhà hát lớn Hà Nội.",
+      "Nội dung quan trọng: Quốc hội lập ra Chính phủ chính thức gồm 10 bộ và kiện toàn nhân sự bộ máy Chính phủ do Hồ Chí Minh làm Chủ tịch. Bầu Ban Thường trực Quốc hội do cụ Nguyễn Văn Tố làm Chủ tịch.",
+      "Ý nghĩa: Đây là bước kiện toàn bộ máy nhà nước, thống nhất quản lý đất nước về mặt hành chính và pháp lý. Đánh dấu sự ra đời chính thức của cơ quan quyền lực cao nhất của Nhà nước Việt Nam Dân chủ Cộng hòa.",
+      "Phiên họp diễn ra trong bầu không khí trang trọng, long trọng với sự tham dự của 333 đại biểu Quốc hội, thể hiện ý chí thống nhất của toàn dân tộc trong sự nghiệp xây dựng và bảo vệ chính quyền cách mạng.",
     ],
     images: [
-      { query: "vietnam national assembly first session march 1946", caption: "Phiên họp Quốc hội đầu tiên" },
-      { query: "hanoi opera house national assembly 1946", caption: "Nhà hát Lớn Hà Nội - nơi họp Quốc hội" },
-      { query: "ho chi minh national assembly speech 1946", caption: "Chủ tịch Hồ Chí Minh phát biểu trước Quốc hội" },
+      { caption: "Phiên họp Quốc hội đầu tiên" },
+      { caption: "Nhà hát Lớn Hà Nội - nơi họp Quốc hội" },
+      { caption: "Chủ tịch Hồ Chí Minh phát biểu trước Quốc hội" },
     ],
   },
   "tam-uoc-1946": {
@@ -126,9 +126,9 @@ const eventData: Record<
       "Tạm ước thể hiện thiện chí hòa bình của Việt Nam, đồng thời vạch trần bản chất hiếu chiến, bội ước của thực dân Pháp trước dư luận thế giới.",
     ],
     images: [
-      { query: "ho chi minh paris 1946 negotiation", caption: "Chủ tịch Hồ Chí Minh tại Paris" },
-      { query: "vietnam france modus vivendi signing 1946", caption: "Ký kết Tạm ước tại Paris" },
-      { query: "ho chi minh fontainebleau conference 1946", caption: "Hội nghị Fontainebleau" },
+      { caption: "Chủ tịch Hồ Chí Minh tại Paris" },
+      { caption: "Ký kết Tạm ước tại Paris" },
+      { caption: "Hội nghị Fontainebleau" },
     ],
   },
   "hien-phap-1946": {
@@ -136,15 +136,15 @@ const eventData: Record<
     date: "9/11/1946",
     description: "Bản Hiến pháp đầu tiên của Việt Nam",
     content: [
-      "Ngày 9/11/1946, Quốc hội khóa I thông qua bản Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa.",
-      "Hiến pháp 1946 khẳng định chủ quyền quốc gia thuộc về toàn thể nhân dân, các quyền tự do dân chủ cơ bản của công dân được đảm bảo.",
-      "Hiến pháp quy định cơ cấu tổ chức bộ máy nhà nước với Quốc hội là cơ quan quyền lực cao nhất, Chính phủ là cơ quan hành chính cao nhất.",
-      "Bản Hiến pháp 1946 là nền tảng pháp lý vững chắc cho Nhà nước Việt Nam Dân chủ Cộng hòa, thể hiện khát vọng độc lập, tự do và tinh thần dân chủ của dân tộc Việt Nam.",
+      "Quá trình chuẩn bị: Ban soạn thảo Hiến pháp được thành lập do Chủ tịch Hồ Chí Minh làm trưởng ban. Dự thảo Hiến pháp được nghiên cứu, thảo luận kỹ lưỡng, lấy ý kiến rộng rãi trong nhân dân.",
+      "Sự kiện: Tại kỳ họp thứ 2 Quốc hội khóa I vào ngày 9/11/1946, Quốc hội đã thông qua bản Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa (Hiến pháp năm 1946).",
+      "Nội dung: Hiến pháp 1946 khẳng định chủ quyền quốc gia thuộc về toàn thể nhân dân, các quyền tự do dân chủ cơ bản của công dân. Quy định cơ cấu tổ chức bộ máy nhà nước với Quốc hội là cơ quan quyền lực cao nhất.",
+      "Ý nghĩa: Đây là đạo luật cơ bản đầu tiên, khẳng định quyền độc lập, tự do của dân tộc và các quyền dân chủ cơ bản của nhân dân Việt Nam, tạo cơ sở pháp lý vững chắc cho chế độ mới.",
     ],
     images: [
-      { query: "vietnam first constitution 1946 document", caption: "Bản Hiến pháp 1946" },
-      { query: "vietnam national assembly constitution vote 1946", caption: "Quốc hội thông qua Hiến pháp" },
-      { query: "ho chi minh constitution proclamation 1946", caption: "Công bố Hiến pháp" },
+      { caption: "Bản Hiến pháp 1946" },
+      { caption: "Quốc hội thông qua Hiến pháp" },
+      { caption: "Công bố Hiến pháp" },
     ],
   },
 }

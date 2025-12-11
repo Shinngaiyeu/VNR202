@@ -8,7 +8,7 @@ const eventDataMap: Record<string, {
   date: string
   description: string
   content: string[]
-  images: { query: string; caption: string }[]
+  images: { caption: string }[]
   videoQuery?: string
 }> = {
   "khai-thac-lan-1": {
@@ -22,9 +22,9 @@ const eventDataMap: Record<string, {
       "Hậu quả chính trị: Mâu thuẫn giữa toàn thể dân tộc Việt Nam với thực dân Pháp và phong kiến phản động trở thành mâu thuẫn chủ yếu và gay gắt nhất.",
     ],
     images: [
-      { query: "french colonial exploitation vietnam first phase mining", caption: "Khai thác mỏ thời Pháp thuộc" },
-      { query: "paul doumer indochina governor vietnam", caption: "Toàn quyền Paul Doumer" },
-      { query: "vietnamese workers colonial exploitation 1900s", caption: "Công nhân Việt Nam bị bóc lột" },
+      { caption: "Khai thác mỏ thời Pháp thuộc" },
+      { caption: "Toàn quyền Paul Doumer" },
+      { caption: "Công nhân Việt Nam bị bóc lột" },
     ],
     videoQuery: "0-1X18fVbWY",
   },
@@ -39,9 +39,9 @@ const eventDataMap: Record<string, {
       "Hậu quả chính trị: Mâu thuẫn giữa toàn thể dân tộc Việt Nam với thực dân Pháp trở nên gay gắt hơn bao giờ hết, tạo điều kiện cho các phong trào yêu nước theo khuynh hướng mới phát triển.",
     ],
     images: [
-      { query: "french rubber plantation vietnam 1920s colonial", caption: "Đồn điền cao su thời Pháp" },
-      { query: "vietnamese workers exploitation 1920s indochina", caption: "Công nhân bị bóc lột" },
-      { query: "vietnam working class 1920s formation", caption: "Giai cấp công nhân hình thành" },
+      { caption: "Đồn điền cao su thời Pháp" },
+      { caption: "Công nhân bị bóc lột" },
+      { caption: "Giai cấp công nhân hình thành" },
     ],
     videoQuery: "apnFTlbapXs",
   },
@@ -57,11 +57,171 @@ const eventDataMap: Record<string, {
       "Kết quả: Nhờ các biện pháp quyết liệt, đến đầu năm 1946, nạn đói cơ bản được đẩy lùi.",
     ],
     images: [
-      { query: "vietnam great famine 1945 starvation", caption: "Nạn đói 1945 - Thảm họa nhân đạo" },
-      { query: "vietnamese people famine 1945 suffering", caption: "Người dân chết đói hàng loạt" },
-      { query: "vietnam rice rescue campaign 1945", caption: "Phong trào cứu đói sau Cách mạng" },
+      { caption: "Nạn đói 1945 - Thảm họa nhân đạo" },
+      { caption: "Người dân chết đói hàng loạt" },
+      { caption: "Phong trào cứu đói sau Cách mạng" },
     ],
     videoQuery: "EXrUqklfAao",
+  },
+  "phap-no-sung": {
+    title: "Pháp nổ súng xâm lược Việt Nam",
+    date: "1/9/1858",
+    description: "Thực dân Pháp mở đầu cuộc xâm lược Việt Nam",
+    content: [
+      "Thời gian: Ngày 1/9/1858.",
+      "Sự kiện: Thực dân Pháp nổ súng xâm lược Việt Nam tại Đà Nẵng, mở đầu quá trình thôn tính nước ta.",
+      "Diễn biến: Sau khi tấn công Đà Nẵng, thực dân Pháp tiếp tục mở rộng xâm lược về phía Nam, chiếm Gia Định năm 1859. Từ đó, Pháp từng bước xâm chiếm cả ba kỳ Bắc - Trung - Nam.",
+      "Ý nghĩa: Đánh dấu sự khởi đầu của cuộc đấu tranh trường kỳ, gian khổ của nhân dân Việt Nam chống thực dân Pháp xâm lược trong gần một thế kỷ.",
+    ],
+    images: [
+      { caption: "Pháp nổ súng tại Đà Nẵng 1858" },
+      { caption: "Khởi đầu cuộc xâm lược" },
+      { caption: "Nhân dân kháng chiến" },
+    ],
+  },
+  "hiep-uoc-patenotre": {
+    title: "Hiệp ước Patenôtre",
+    date: "6/6/1884",
+    description: "Triều đình nhà Nguyễn đầu hàng thực dân Pháp",
+    content: [
+      "Thời gian: Ngày 6/6/1884.",
+      "Sự kiện: Triều đình nhà Nguyễn ký Hiệp ước Patenôtre (Hiệp ước Patơnốt), đầu hàng hoàn toàn thực dân Pháp.",
+      "Nội dung: Hiệp ước công nhận quyền bảo hộ của Pháp đối với toàn bộ Việt Nam. Triều đình nhà Nguyễn từ bỏ chủ quyền quốc gia, chấp nhận làm bù nhìn cho thực dân Pháp.",
+      "Ý nghĩa: Việt Nam trở thành một xứ thuộc địa, chấm dứt tư cách quốc gia độc lập. Đánh dấu sự sụp đổ hoàn toàn của triều đình phong kiến nhà Nguyễn trước âm mưu xâm lược của thực dân Pháp.",
+    ],
+    images: [
+      { caption: "Ký kết Hiệp ước Patenôtre" },
+      { caption: "Việt Nam mất độc lập" },
+      { caption: "Triều đình nhà Nguyễn đầu hàng" },
+    ],
+  },
+  "dang-thanh-lap": {
+    title: "Đảng Cộng sản Việt Nam ra đời",
+    date: "3/2/1930",
+    description: "Sự kiện lịch sử vĩ đại của dân tộc Việt Nam",
+    content: [
+      "Thời gian: Ngày 3/2/1930.",
+      "Sự kiện: Lãnh tụ Nguyễn Ái Quốc chủ trì Hội nghị hợp nhất các tổ chức cộng sản tại Cửu Long (Hồng Kông, Trung Quốc) thành một đảng duy nhất lấy tên là Đảng Cộng sản Việt Nam.",
+      "Bối cảnh: Trước đó, phong trào cộng sản ở Việt Nam bị chia rẽ thành nhiều tổ chức khác nhau, gây yếu kém trong lãnh đạo cách mạng. Sự ra đời của Đảng là nhu cầu cấp thiết của lịch sử.",
+      "Ý nghĩa: Chấm dứt sự khủng hoảng về đường lối cứu nước, mở ra bước ngoặt lịch sử vĩ đại cho cách mạng Việt Nam. Từ đây, cách mạng Việt Nam có đường lối đúng đắn, có sự lãnh đạo thống nhất của Đảng Cộng sản, tiến tới những thắng lợi vẻ vang.",
+    ],
+    images: [
+      { caption: "Hội nghị thành lập Đảng 1930" },
+      { caption: "Lãnh tụ Nguyễn Ái Quốc" },
+      { caption: "Đảng Cộng sản Việt Nam ra đời" },
+    ],
+  },
+  "cach-mang-thang-tam": {
+    title: "Cách mạng Tháng Tám thành công",
+    date: "8-9/1945",
+    description: "Cách mạng giải phóng dân tộc vĩ đại nhất lịch sử Việt Nam",
+    content: [
+      "Thời gian: Tháng 8/1945 (đỉnh cao là ngày 2/9/1945).",
+      "Sự kiện: Nhân dân Việt Nam dưới sự lãnh đạo của Đảng đã nổi dậy giành chính quyền từ tay phát xít Nhật. Ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh ra nước Việt Nam Dân chủ Cộng hòa.",
+      "Diễn biến: Từ ngày 13 đến 19/8/1945, khởi nghĩa nổ ra trên toàn quốc từ Bắc vào Nam. Ngày 19/8, khởi nghĩa Hà Nội thành công. Ngày 25/8, vua Bảo Đại thoái vị. Ngày 2/9/1945, lễ mừng độc lập long trọng được tổ chức tại Quảng trường Ba Đình, Hà Nội.",
+      "Ý nghĩa: Đập tan xiềng xích nô lệ của thực dân, đế quốc; chấm dứt chế độ quân chủ chuyên chế; lập nên nhà nước công nông đầu tiên ở Đông Nam Á. Mở ra kỷ nguyên mới - kỷ nguyên độc lập dân tộc gắn liền với chủ nghĩa xã hội.",
+    ],
+    images: [
+      { caption: "Cách mạng Tháng Tám thành công" },
+      { caption: "Tuyên ngôn Độc lập 2/9/1945" },
+      { caption: "Quảng trường Ba Đình lịch sử" },
+    ],
+  },
+  "dong-kinh-nghia-thuc": {
+    title: "Phong trào Đông Kinh Nghĩa Thục",
+    date: "1907",
+    description: "Phong trào khai dân trí tiêu biểu đầu thế kỷ XX",
+    content: [
+      "Bối cảnh: Đầu thế kỷ XX, các sĩ phu yêu nước muốn tìm con đường cứu nước mới, không dùng bạo động vũ trang mà chủ trương 'khai dân trí' để chấn hưng đất nước.",
+      "Hoạt động: Thành lập trường học tại Hà Nội (số 10 Hàng Đào) nhằm truyền bá tư tưởng mới, dạy chữ Quốc ngữ và các môn học thực dụng. Tổ chức các buổi diễn thuyết, bình văn, xuất bản sách báo cổ động lòng yêu nước.",
+      "Kết cục: Do ảnh hưởng lan rộng và tinh thần yêu nước mạnh mẽ của phong trào, thực dân Pháp lo sợ và đã ra lệnh đóng cửa trường vào tháng 12/1907.",
+      "Ý nghĩa: Mặc dù bị dập tắt, phong trào đã góp phần thức tỉnh lòng yêu nước và cổ vũ tinh thần học tập, đổi mới tư duy của người Việt. Đây là biểu hiện của khuynh hướng duy tân trong phong trào yêu nước đầu thế kỷ XX.",
+    ],
+    images: [
+      { caption: "Trường Đông Kinh Nghĩa Thục" },
+      { caption: "Phong trào khai dân trí" },
+      { caption: "Sĩ phu yêu nước" },
+    ],
+  },
+  "chinh-sach-ngu-dan": {
+    title: "Chính sách ngu dân của thực dân Pháp",
+    date: "1884-1945",
+    description: "Chính sách đen tối nhằm kìm hãm sự phát triển của dân tộc",
+    content: [
+      "Mục đích: Thực hiện chính sách 'ngu dân' để dễ bề cai trị và kìm hãm sự phát triển của dân tộc Việt Nam.",
+      "Biểu hiện cụ thể: Hạn chế giáo dục - số lượng trường học rất ít ỏi, trong khi đó nhà tù được xây dựng nhiều hơn trường học. Đầu độc dân chúng - khuyến khích và duy trì các tệ nạn xã hội như rượu cồn, thuốc phiện để làm suy nhược giống nòi và tinh thần đấu tranh. Tuyên truyền văn hóa nô dịch - ra sức tuyên truyền tư tưởng 'khai hóa văn minh' của 'Đại Pháp' nhưng thực chất là nô dịch văn hóa.",
+      "Hậu quả: Đến năm 1945, hơn 90% dân số Việt Nam bị mù chữ (thất học). Đây là một trong những tội ác nặng nề nhất của chế độ thực dân.",
+      "Ý nghĩa: Chính sách ngu dân là bằng chứng rõ ràng về bản chất tàn bạo, man rợ của chế độ thực dân Pháp. Nó đã tạo ra động lực mạnh mẽ cho phong trào giải phóng dân tộc và xây dựng nền giáo dục mới sau Cách mạng Tháng Tám.",
+    ],
+    images: [
+      { caption: "Chính sách ngu dân" },
+      { caption: "Nạn mù chữ trầm trọng" },
+      { caption: "Nhân dân bị kìm hãm giáo dục" },
+    ],
+  },
+  "truyen-ba-quoc-ngu": {
+    title: "Phong trào truyền bá chữ Quốc ngữ",
+    date: "1936-1946",
+    description: "Phong trào giáo dục xuyên suốt do Đảng lãnh đạo",
+    content: [
+      "Giai đoạn Mặt trận Dân chủ (1936-1939): Theo sáng kiến của Đảng, Hội Truyền bá Quốc ngữ ra đời. Từ cuối năm 1937, phong trào phát triển mạnh mẽ, giúp hàng vạn người dân lao động biết đọc, biết viết, khơi dậy lòng yêu nước qua con chữ.",
+      "Giai đoạn sau Cách mạng Tháng Tám (1945-1946): Chủ tịch Hồ Chí Minh nâng phong trào lên tầm mức quốc gia với tên gọi 'Bình dân học vụ' để 'diệt giặc dốt'. Phong trào lan rộng khắp cả nước với tinh thần 'người biết chữ dạy người chưa biết chữ'.",
+      "Kết quả: Đến cuối năm 1946, phong trào đã giúp hơn 2,5 triệu người thoát nạn mù chữ, giảm tỷ lệ mù chữ từ 95% xuống còn khoảng 80%.",
+      "Ý nghĩa: Chữ Quốc ngữ trở thành vũ khí sắc bén để nâng cao dân trí, tuyên truyền cách mạng và xây dựng chế độ mới. Phong trào thể hiện sự quan tâm sâu sắc của Đảng và Chủ tịch Hồ Chí Minh đến quyền được học tập của nhân dân.",
+    ],
+    images: [
+      { caption: "Phong trào truyền bá chữ Quốc ngữ" },
+      { caption: "Lớp học chữ Quốc ngữ" },
+      { caption: "Nhân dân học chữ Quốc ngữ" },
+    ],
+  },
+  "duc-dau-hang": {
+    title: "Phát xít Đức đầu hàng",
+    date: "9/5/1945",
+    description: "Chiến tranh thế giới thứ hai kết thúc tại châu Âu",
+    content: [
+      "Thời gian: Ngày 9/5/1945.",
+      "Sự kiện: Phát xít Đức chính thức đầu hàng Liên Xô và các nước Đồng minh, chấm dứt Chiến tranh thế giới thứ hai tại châu Âu.",
+      "Bối cảnh: Sau hơn 5 năm chiến tranh khốc liệt, quân đội Đồng minh đã tiến công vào Berlin, buộc Đức phải đầu hàng không điều kiện.",
+      "Ý nghĩa: Chiến tranh thế giới thứ hai kết thúc tại châu Âu, tạo đà cho phe Đồng minh dồn sức tiêu diệt phát xít Nhật ở châu Á. Tạo thời cơ thuận lợi cho các phong trào giải phóng dân tộc ở châu Á, trong đó có Việt Nam.",
+    ],
+    images: [
+      { caption: "Đức đầu hàng ngày 9/5/1945" },
+      { caption: "Chiến tranh kết thúc ở châu Âu" },
+      { caption: "Đồng minh chiến thắng" },
+    ],
+  },
+  "lien-xo-danh-quan-dong": {
+    title: "Liên Xô đánh tan quân Quan Đông",
+    date: "8/1945",
+    description: "Hồng quân Liên Xô tiêu diệt lực lượng tinh nhuệ của Nhật",
+    content: [
+      "Bối cảnh: Sau khi kết thúc chiến tranh ở châu Âu, Liên Xô tuyên chiến với Nhật Bản, thực hiện cam kết với Đồng minh.",
+      "Sự kiện: Hồng quân Liên Xô tấn công và đánh tan đạo quân Quan Đông tinh nhuệ của Nhật đang đóng tại Mãn Châu (Trung Quốc). Chiến dịch diễn ra nhanh như chớp, quân Nhật tan vỡ hoàn toàn.",
+      "Tác động: Đòn đánh này cùng với việc Mỹ ném bom nguyên tử vào Hiroshima (6/8) và Nagasaki (9/8) đã làm sụp đổ hoàn toàn tinh thần chiến đấu của quân đội Nhật, buộc Nhật phải đầu hàng.",
+      "Ý nghĩa đối với Việt Nam: Làm suy yếu nghiêm trọng lực lượng Nhật ở Đông Dương, tạo điều kiện thuận lợi cho Đảng ta phát động Tổng khởi nghĩa.",
+    ],
+    images: [
+      { caption: "Hồng quân Liên Xô tấn công" },
+      { caption: "Quân Quan Đông bị tiêu diệt" },
+      { caption: "Chiến dịch Mãn Châu" },
+    ],
+  },
+  "nhat-dau-hang": {
+    title: "Nhật hoàng tuyên bố đầu hàng",
+    date: "15/8/1945",
+    description: "Thời cơ vàng cho cách mạng Việt Nam",
+    content: [
+      "Thời gian: Ngày 15/8/1945.",
+      "Sự kiện: Chính phủ Nhật Bản tuyên bố đầu hàng Đồng minh không điều kiện sau khi bị ném bom nguyên tử và Hồng quân Liên Xô đánh tan quân Quan Đông.",
+      "Tác động trực tiếp đến Việt Nam: Quân Nhật ở Đông Dương mất hết tinh thần, chính quyền tay sai hoang mang cực độ. Xuất hiện tình trạng chân không quyền lực.",
+      "Thời cơ lịch sử: Thời cơ 'ngàn năm có một' xuất hiện, Đảng ta chớp lấy thời cơ này để phát động Tổng khởi nghĩa giành chính quyền trước khi quân Đồng minh vào. Từ ngày 13-19/8/1945, khởi nghĩa nổ ra trên toàn quốc, đỉnh cao là ngày 19/8 giành chính quyền tại Hà Nội.",
+    ],
+    images: [
+      { caption: "Nhật đầu hàng 15/8/1945" },
+      { caption: "Nhật hoàng tuyên bố đầu hàng" },
+      { caption: "Thời cơ cách mạng Việt Nam" },
+    ],
   },
 }
 
@@ -78,9 +238,9 @@ export default async function EventPage({ params }: { params: Promise<{ category
       "Những bài học kinh nghiệm từ sự kiện này vẫn còn giá trị đến ngày nay.",
     ],
     images: [
-      { query: "vietnam historical event 1945", caption: "Hình ảnh tư liệu 1" },
-      { query: "vietnamese revolution historical photo", caption: "Hình ảnh tư liệu 2" },
-      { query: "vietnam independence movement 1940s", caption: "Hình ảnh tư liệu 3" },
+      { caption: "Hình ảnh tư liệu 1" },
+      { caption: "Hình ảnh tư liệu 2" },
+      { caption: "Hình ảnh tư liệu 3" },
     ],
   }
 

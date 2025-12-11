@@ -6,11 +6,11 @@ interface TimelineEventProps {
   title: string
   description: string
   href: string
-  imageQuery: string
   isLast?: boolean
+  showDetailButton?: boolean
 }
 
-export function TimelineEvent({ date, title, description, href, imageQuery, isLast = false }: TimelineEventProps) {
+export function TimelineEvent({ date, title, description, href, isLast = false, showDetailButton = true }: TimelineEventProps) {
   return (
     <div className="relative flex gap-6">
       {/* Timeline line */}
@@ -33,25 +33,35 @@ export function TimelineEvent({ date, title, description, href, imageQuery, isLa
 
           <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">{description}</p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="aspect-video sm:w-48 relative rounded-lg overflow-hidden bg-muted flex-shrink-0">
+          {showDetailButton ? (
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="aspect-video sm:w-48 relative rounded-lg overflow-hidden bg-muted flex-shrink-0">
+                <img
+                  src={`/images/events/${href.split('/').pop()}.png`}
+                  alt={title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="flex items-end">
+                <Link
+                  href={href}
+                  className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all"
+                >
+                  Xem chi tiết sự kiện
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <div className="aspect-video relative rounded-lg overflow-hidden bg-muted">
               <img
                 src={`/images/events/${href.split('/').pop()}.png`}
                 alt={title}
                 className="w-full h-full object-cover"
               />
             </div>
-
-            <div className="flex items-end">
-              <Link
-                href={href}
-                className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all"
-              >
-                Xem chi tiết sự kiện
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
