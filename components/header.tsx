@@ -11,6 +11,7 @@ const navItems = [
   { href: "/boi-canh-truoc-1945", label: "Bối cảnh trước 1945" },
   { href: "/boi-canh-sau-1945", label: "Bối cảnh sau 1945" },
   { href: "/chu-truong-duong-loi", label: "Chủ trương đường lối của Đảng" },
+  { href: "/video", label: "Video Sản Phẩm" },
   {
     href: "/game",
     label: "Trò chơi",
