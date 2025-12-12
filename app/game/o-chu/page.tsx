@@ -427,7 +427,7 @@ export default function CrosswordGame() {
               <CardContent className="p-4 overflow-x-auto">
                 <div className="space-y-3 min-w-fit">
                   {crosswordData.map((row, rowIndex) => {
-                    const keywordColumnIndex = 8
+                    const keywordColumnIndex = 5
                     const paddingBefore = keywordColumnIndex - (row.keywordPosition - 1)
 
                     return (
