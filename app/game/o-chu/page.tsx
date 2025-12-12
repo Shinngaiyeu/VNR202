@@ -34,7 +34,7 @@ const crosswordData: CrosswordRow[] = [
     answer: "GIACDOI",
     hint: "Tên loại 'giặc' khủng khiếp đã cướp đi sinh mạng của hơn 2 triệu đồng bào ta vào năm 1945, được Chủ tịch Hồ Chí Minh xếp ngang hàng với giặc dốt và giặc ngoại xâm?",
     keywordPosition: 4,
-    keywordLetter: "D",
+    keywordLetter: "C",
   },
   {
     answer: "HOAHOAN",
