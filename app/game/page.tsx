@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Shield, Wheat, Users, AlertTriangle, Trophy, Skull, RotateCcw, Award, Clock } from "lucide-react"
+import { Shield, Wheat, Users, AlertTriangle, Trophy, Skull, RotateCcw, Award, Clock, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { database } from "@/lib/firebase"
 import { ref, push, serverTimestamp } from "firebase/database"
@@ -1004,6 +1004,12 @@ export default function GamePage() {
   if (gameState === "intro") {
     return (
       <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-red-900 flex items-center justify-center p-4">
+        {/* Nút quay lại trang chủ */}
+        <Link href="/" className="absolute top-4 left-4 flex items-center gap-2 text-white hover:text-yellow-300 transition-colors">
+          <ArrowLeft className="h-5 w-5" />
+          <span className="hidden sm:inline">Trang chủ</span>
+        </Link>
+        
         <div className="max-w-2xl w-full bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-yellow-500/30">
           <div className="mb-6">
             <div className="w-24 h-24 mx-auto bg-yellow-500 rounded-full flex items-center justify-center mb-4">
@@ -1100,22 +1106,13 @@ export default function GamePage() {
             >
               Bắt Đầu Sứ Mệnh
             </button>
-            <div className="grid grid-cols-2 gap-3">
-              <Link
-                href="/game/leaderboard"
-                className="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
-              >
-                <Trophy className="w-4 h-4" />
-                Bảng Xếp Hạng
-              </Link>
-              <Link
-                href="/game/firebase-results"
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
-              >
-                <Award className="w-4 h-4" />
-                Firebase Results
-              </Link>
-            </div>
+            <Link
+              href="/game/leaderboard"
+              className="w-full px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-bold text-lg rounded-xl transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+            >
+              <Trophy className="w-5 h-5" />
+              Bảng Xếp Hạng
+            </Link>
           </div>
         </div>
       </div>
@@ -1498,11 +1495,17 @@ export default function GamePage() {
     <main className="min-h-screen bg-gradient-to-b from-red-950 to-red-900">
       <div className="sticky top-0 z-50 bg-red-950/95 backdrop-blur-sm border-b border-yellow-500/30 shadow-lg">
         <div className="max-w-6xl mx-auto px-4 py-3">
-          {/* Round indicator and Timer */}
+          {/* Back button and Round indicator */}
           <div className="flex justify-between items-center mb-2">
-            <span className="text-yellow-400 font-bold text-sm">
-              Vòng {currentRound + 1} / {gameRounds.length}
-            </span>
+            <div className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-1 text-white hover:text-yellow-300 transition-colors">
+                <ArrowLeft className="h-4 w-4" />
+                <span className="hidden sm:inline text-sm">Trang chủ</span>
+              </Link>
+              <span className="text-yellow-400 font-bold text-sm">
+                Vòng {currentRound + 1} / {gameRounds.length}
+              </span>
+            </div>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-yellow-400" />
               <span className="text-yellow-400 font-bold text-sm font-mono">

@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Trophy, RotateCcw, HelpCircle, CheckCircle, Search } from "lucide-react"
+import { Trophy, RotateCcw, HelpCircle, CheckCircle, Search, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import confetti from "canvas-confetti"
 
@@ -251,9 +251,18 @@ export default function WordSearchGame() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-yellow-50 to-red-50">
       <div className="bg-red-700 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Truy Tìm Ký Ức: 1945 - 1946</h1>
-          <p className="text-yellow-300 text-lg">Tìm 6 từ khóa ẩn giấu trong bảng chữ cái</p>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <Link href="/game" className="flex items-center gap-2 text-white hover:text-yellow-300 transition-colors">
+              <ArrowLeft className="h-5 w-5" />
+              <span className="hidden sm:inline">Quay lại</span>
+            </Link>
+            <div className="text-center flex-1">
+              <h1 className="text-3xl md:text-4xl font-bold mb-2">Truy Tìm Ký Ức: 1945 - 1946</h1>
+              <p className="text-yellow-300 text-lg">Tìm 6 từ khóa ẩn giấu trong bảng chữ cái</p>
+            </div>
+            <div className="w-20"></div>
+          </div>
         </div>
       </div>
 

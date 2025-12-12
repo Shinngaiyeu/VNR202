@@ -276,7 +276,7 @@ export default function LeaderboardPage() {
             <CardHeader>
               <CardTitle className="text-center flex items-center justify-center gap-2">
                 <RefreshCw className="w-5 h-5 text-green-600" />
-                Thống Kê Realtime
+                Thống Kê
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -292,12 +292,7 @@ export default function LeaderboardPage() {
                   </p>
                 </div>
               </div>
-              <div className="mt-4 text-center">
-                <p className="text-xs text-gray-500 flex items-center justify-center gap-1">
-                  <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  Cập nhật tự động từ Firebase Realtime Database
-                </p>
-              </div>
+              
             </CardContent>
           </Card>
         )}
