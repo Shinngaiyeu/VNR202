@@ -182,7 +182,7 @@ export default function LeaderboardPage() {
           <Card>
             <CardContent className="py-16 text-center">
               <RefreshCw className="w-16 h-16 text-blue-500 mx-auto mb-4 animate-spin" />
-              <p className="text-xl text-gray-600">Đang tải dữ liệu realtime từ Firebase...</p>
+              <p className="text-xl text-gray-600">Đang tải dữ liệu</p>
             </CardContent>
           </Card>
         )}

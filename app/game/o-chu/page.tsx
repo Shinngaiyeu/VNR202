@@ -464,9 +464,9 @@ export default function CrosswordGame() {
       <div className="bg-red-700 text-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            <Link href="/game" className="flex items-center gap-2 text-white hover:text-yellow-300 transition-colors">
+            <Link href="/" className="flex items-center gap-2 text-white hover:text-yellow-300 transition-colors">
               <ArrowLeft className="h-5 w-5" />
-              <span className="hidden sm:inline">Quay lại</span>
+              <span className="hidden sm:inline">Trang chủ</span>
             </Link>
             <div className="text-center flex-1">
               <h1 className="text-3xl md:text-4xl font-bold mb-2">Ô Chữ Lịch Sử</h1>
