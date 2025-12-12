@@ -5,9 +5,10 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Trophy, RotateCcw, Star, HelpCircle } from "lucide-react"
+import { Trophy, RotateCcw, Star, HelpCircle, Lightbulb } from "lucide-react"
 import Link from "next/link"
 import confetti from "canvas-confetti"
+import { toast } from "sonner"
 
 interface CrosswordRow {
   answer: string
@@ -89,6 +90,12 @@ export default function CrosswordGame() {
   useEffect(() => {
     inputRefs.current = crosswordData.map((row) => Array(row.answer.length).fill(null))
   }, [])
+
+  const showTemporaryMessage = (msg: string) => {
+    toast.info(msg, {
+      duration: 3000,
+    })
+  }
 
   const normalizeChar = (char: string): string => {
     const map: Record<string, string> = {
@@ -327,6 +334,108 @@ export default function CrosswordGame() {
     }
   }
 
+  // Gợi ý: hiện 1 chữ tiếp theo (theo thứ tự từ trái qua phải)
+  // Nếu ký tự hiện tại sai -> sửa ký tự đó (ví dụ N -> T)
+  // Nếu ký tự rỗng -> điền ký tự đúng
+  // Sau mỗi sửa hiển thị thông báo vị trí và ký tự đã sửa
+  const revealHint = (rowIndex: number) => {
+    if (revealed[rowIndex] || gameWon) return
+
+    const correctAnswer = crosswordData[rowIndex].answer.toUpperCase()
+    const len = correctAnswer.length
+
+    // Build currentAnswer array of correct length using existing stored string (may be shorter)
+    const currentAnswer: string[] = []
+    const stored = (answers[rowIndex] || "").toUpperCase()
+    for (let i = 0; i < len; i++) {
+      currentAnswer[i] = stored[i] || ""
+    }
+
+    // Find first index where char does NOT match (including empty)
+    let targetIndex = -1
+    for (let i = 0; i < len; i++) {
+      const curr = currentAnswer[i] || ""
+      const corr = correctAnswer[i]
+      if (normalizeChar(curr) !== normalizeChar(corr)) {
+        targetIndex = i
+        break
+      }
+    }
+
+    // If nothing to fix (all match)
+    if (targetIndex === -1) {
+      // If all match and length correct -> reveal
+      if (checkAnswer(rowIndex, currentAnswer.join(""))) {
+        const newRevealed = [...revealed]
+        newRevealed[rowIndex] = true
+        setRevealed(newRevealed)
+
+        // update keyword letter if applicable
+        if (rowIndex >= 0 && rowIndex < KEYWORD.length) {
+          const newKeywordInput = [...keywordInput]
+          newKeywordInput[rowIndex] = crosswordData[rowIndex].keywordLetter
+          setKeywordInput(newKeywordInput)
+        }
+
+        if (newRevealed.every((r) => r)) {
+          setShowKeyword(true)
+          setGameWon(true)
+          confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ["#dc2626", "#facc15", "#ffffff"],
+          })
+        }
+      }
+      return
+    }
+
+    const oldChar = currentAnswer[targetIndex] || ""
+    const newChar = correctAnswer[targetIndex]
+
+    // Replace that position with the correct char
+    currentAnswer[targetIndex] = newChar
+    const newAnswers = [...answers]
+    newAnswers[rowIndex] = currentAnswer.join("")
+    setAnswers(newAnswers)
+
+    // If replaced position is keyword cell, update keyword input
+    if (targetIndex === crosswordData[rowIndex].keywordPosition - 1) {
+      const newKeywordInput = [...keywordInput]
+      if (rowIndex >= 0 && rowIndex < KEYWORD.length) {
+        newKeywordInput[rowIndex] = crosswordData[rowIndex].keywordLetter
+        setKeywordInput(newKeywordInput)
+      }
+    }
+
+    // Message for user (Vietnamese)
+    if (oldChar === "" || oldChar.trim() === "") {
+      showTemporaryMessage(`Hàng ${rowIndex + 1}: đã điền '${newChar}' vào ô ${targetIndex + 1}.`)
+    } else {
+      showTemporaryMessage(`Hàng ${rowIndex + 1}: ô ${targetIndex + 1} sai ('${oldChar}') → đã sửa thành '${newChar}'.`)
+    }
+
+    // If after filling there is no empty/incorrect -> mark revealed
+    const stillEmptyOrWrong = currentAnswer.some((ch, i) => normalizeChar(ch || "") !== normalizeChar(correctAnswer[i]))
+    if (!stillEmptyOrWrong) {
+      const newRevealed = [...revealed]
+      newRevealed[rowIndex] = true
+      setRevealed(newRevealed)
+
+      if (newRevealed.every((r) => r)) {
+        setShowKeyword(true)
+        setGameWon(true)
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ["#dc2626", "#facc15", "#ffffff"],
+        })
+      }
+    }
+  }
+
   const resetGame = () => {
     setAnswers(crosswordData.map(() => ""))
     setRevealed(crosswordData.map(() => false))
@@ -492,6 +601,17 @@ export default function CrosswordGame() {
                             )
                           })}
 
+                        {/* Nút gợi ý - hiện 1 chữ tiếp theo / sửa chữ sai */}
+                        {!revealed[rowIndex] && (
+                          <button
+                            onClick={() => revealHint(rowIndex)}
+                            className="ml-2 p-2 text-yellow-600 hover:text-yellow-700 hover:bg-yellow-100 rounded-full transition-colors"
+                            title="Gợi ý: sửa/chèn chữ tiếp theo của hàng này"
+                          >
+                            <Lightbulb className="h-5 w-5" />
+                          </button>
+                        )}
+
                         {/* Correct indicator */}
                         {revealed[rowIndex] && (
                           <div className="ml-2 text-green-600">
@@ -529,6 +649,9 @@ export default function CrosswordGame() {
                       }`}
                       onClick={() => {
                         setSelectedRow(idx)
+                        // Khi click vào card gợi ý: sửa/hiện chữ tiếp theo của hàng này
+                        revealHint(idx)
+                        // cố gắng focus ô đầu (nếu vẫn muốn), nhưng nếu đã reveal thì không cần
                         inputRefs.current[idx]?.[0]?.focus()
                       }}
                     >
@@ -554,18 +677,21 @@ export default function CrosswordGame() {
         </div>
 
         {/* Controls */}
-        <div className="flex justify-center gap-4 mt-8">
-          <Button
-            onClick={resetGame}
-            variant="outline"
-            className="border-red-600 text-red-600 hover:bg-red-50 bg-transparent"
-          >
-            <RotateCcw className="h-4 w-4 mr-2" />
-            Chơi lại
-          </Button>
-          <Link href="/game">
-            <Button className="bg-red-600 hover:bg-red-700 text-white">Quay về Trò chơi</Button>
-          </Link>
+        <div className="flex flex-col items-center gap-4 mt-8">
+          <div className="flex justify-center gap-4">
+            <Button
+              onClick={resetGame}
+              variant="outline"
+              className="border-red-600 text-red-600 hover:bg-red-50 bg-transparent"
+            >
+              <RotateCcw className="h-4 w-4 mr-2" />
+              Chơi lại
+            </Button>
+            <Link href="/game">
+              <Button className="bg-red-600 hover:bg-red-700 text-white">Quay về Trò chơi</Button>
+            </Link>
+          </div>
+          <p className="text-xs text-gray-500 mt-1">Nhấn vào bóng đèn gợi ý để sửa từng chữ (sửa từ trái → phải)</p>
         </div>
 
         {/* Win Modal */}
@@ -589,11 +715,11 @@ export default function CrosswordGame() {
                   <Button
                     onClick={() => setGameWon(false)}
                     variant="outline"
-                    className="border-white text-white hover:bg-white/10"
+                    className="border-2 border-white text-white hover:bg-white hover:text-red-700 font-bold px-6 py-2"
                   >
                     Đóng
                   </Button>
-                  <Button onClick={resetGame} className="bg-yellow-400 text-red-700 hover:bg-yellow-300">
+                  <Button onClick={resetGame} className="bg-yellow-400 text-red-700 hover:bg-yellow-300 font-bold px-6 py-2">
                     Chơi lại
                   </Button>
                 </div>
