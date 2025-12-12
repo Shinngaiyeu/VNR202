@@ -714,8 +714,7 @@ export default function CrosswordGame() {
                 <div className="flex gap-3 justify-center">
                   <Button
                     onClick={() => setGameWon(false)}
-                    variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-red-700 font-bold px-6 py-2"
+                    className="bg-white text-red-700 hover:bg-gray-100 font-bold px-6 py-2"
                   >
                     Đóng
                   </Button>
