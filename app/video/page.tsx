@@ -38,7 +38,7 @@ export default function VideoPage() {
               <video
                 controls
                 className="w-full h-full"
-                poster="/images/hero/vietnam-flag.jpg"
+                poster="/images/hero/vietnam-flag.png"
               >
                 <source src="/videos/Việt_Nam_1945-1946__Lửa_thử_vàng.mp4" type="video/mp4" />
                 Trình duyệt của bạn không hỗ trợ video.
